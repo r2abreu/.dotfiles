@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export KUBECONFIG=~/work/emma/pre-prod/kubernetes/dev/config.cfg  
+configmap=$(kubectl get configmaps | fzf | cut -d " " -f1)
+kubectl edit configmap $configmap
+kubectl rollout restart deployment/$(echo $configmap | sed "s/-configmap//g")

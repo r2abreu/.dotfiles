@@ -1,0 +1,5 @@
+#!/bin/bash 
+
+export KUBECONFIG=~/work/emma/pre-prod/kubernetes/$1/config.cfg
+
+kubectl exec `kubectl get pods --no-headers=true --selector=app=redis -o custom-columns=:metadata.name` -- redis-cli FLUSHALL

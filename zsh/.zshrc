@@ -1,0 +1,20 @@
+export ZSH="/Users/arturoabreu/.oh-my-zsh"
+export PATH="$HOME/.npm-packages/bin:$PATH"
+export PATH=$PATH:~/bin
+ZSH_THEME="robbyrussell"
+
+plugins=(git zsh-autosuggestions)
+
+source $ZSH/oh-my-zsh.sh
+
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^p "aabreu\n" 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
+[ -z "$PS1" ] && return
+function cd {
+    builtin cd "$@" && ls -F
+}
+
+
